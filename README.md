@@ -2,6 +2,12 @@
 
 V0 of a local/static research platform for organizing and presenting research in Econophysics, Visual Analytics and Data Science.
 
+## Live Research Platform
+
+https://citiescomparing.dev
+
+Repository: https://github.com/LeonardoCamargoRossato/CitiesComparing_ResearchPlatform
+
 ## Stack
 
 - React
@@ -23,7 +29,28 @@ npm run dev
 npm run build
 ```
 
-The Vite `base` is configured as `./` and routing uses `HashRouter`, keeping the frontend suitable for a future static GitHub Pages deployment.
+The Vite `base` is configured as `./` and routing uses `HashRouter`. Relative build paths support both the custom domain root and the GitHub Pages project-path fallback without changing application routes.
+
+## Deployment and custom domain
+
+GitHub Actions builds the Vite application and deploys `dist/` to GitHub Pages. The custom domain is managed in **Repository Settings → Pages → Custom domain**, so this workflow does not publish a duplicate `CNAME` file.
+
+Canonical domain: `citiescomparing.dev`
+
+The expected public routes retain hash-based navigation, for example:
+
+```text
+https://citiescomparing.dev/#/research
+https://citiescomparing.dev/#/toolkit
+https://citiescomparing.dev/#/notebooks
+https://citiescomparing.dev/#/about
+```
+
+Until DNS and the Pages custom-domain setting are active, the GitHub Pages project URL remains the technical fallback:
+
+```text
+https://leonardocamargorossato.github.io/CitiesComparing_ResearchPlatform/
+```
 
 ## Pages
 
