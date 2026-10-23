@@ -15,6 +15,14 @@ function PdfThumb({ src, title }) {
 export default function ResearchAssetPreview({ resource }) {
   const commonLabel = `${resource.actionLabel || 'Abrir'}: ${resource.title}`
 
+  if (resource.previewType === 'static-image') {
+    return (
+      <div className="research-preview research-preview--static">
+        <img src={resource.preview} alt={`Capa de ${resource.title}`} />
+      </div>
+    )
+  }
+
   if (resource.previewType === 'image') {
     const item = { src: resource.preview, alt: resource.title, title: resource.title }
     return <div className="research-preview"><InteractiveImage item={item} items={[item]} collectionId={`research-${resource.id}`} className="research-preview__image" /></div>

@@ -432,6 +432,7 @@ code { font-family: "SFMono-Regular", Consolas, monospace; }
 .pdf-resource-card__preview:hover .research-preview__overlay,
 .pdf-resource-card__preview:focus-visible .research-preview__overlay { opacity: 1; transform: translateY(0); }
 .research-preview img { width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease, filter .2s ease; }
+.research-preview--static img { object-fit: cover; object-position: top center; }
 .research-preview--control:hover img,
 .research-preview--control:focus-visible img { transform: scale(1.02); filter: brightness(.92); }
 .research-preview .interactive-image { height: 100%; border-radius: 0; }
