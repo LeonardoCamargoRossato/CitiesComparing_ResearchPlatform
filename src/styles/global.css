@@ -19,6 +19,41 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--bg); }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 74px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .2;
+  background-image:
+    linear-gradient(rgba(138,91,60,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138,91,60,.09) 1px, transparent 1px),
+    radial-gradient(circle at 8% 24%, rgba(100,64,42,.55) 0 2px, transparent 3px),
+    radial-gradient(circle at 14% 18%, rgba(100,64,42,.48) 0 2px, transparent 3px),
+    radial-gradient(circle at 20% 29%, rgba(100,64,42,.42) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 68%, rgba(100,64,42,.5) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 59%, rgba(100,64,42,.45) 0 2px, transparent 3px),
+    radial-gradient(circle at 91% 73%, rgba(100,64,42,.4) 0 2px, transparent 3px);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto, auto, auto, auto;
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+}
+body::after {
+  content: 'y ∝ xᵅ    log y = α log x + c\A\AΣᵢ (xᵢ − x̄)²    G = (V, E)\A\Ar = cov(X,Y) / σₓσᵧ';
+  position: fixed;
+  top: 24%;
+  right: 2.5vw;
+  z-index: 0;
+  pointer-events: none;
+  white-space: pre;
+  color: rgba(100,64,42,.09);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(.82rem, 1.1vw, 1.15rem);
+  font-style: italic;
+  line-height: 1.55;
+  text-align: right;
+}
+.app-shell { position: relative; z-index: 1; }
 a { color: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; }
@@ -160,6 +195,8 @@ code { font-family: "SFMono-Regular", Consolas, monospace; }
 .footer p { margin: 6px 0 0; color: var(--muted); }
 .footer__links { display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start; }
 .footer__links a { color: var(--accent-strong); font-weight: 700; text-decoration: none; }
+.footer__portfolio { display: inline-flex; margin-top: 12px; color: var(--accent-strong); font-weight: 800; text-decoration: none; }
+.footer__portfolio:hover, .footer__links a:hover { text-decoration: underline; }
 
 @media (max-width: 1020px) {
   .page-hero__content:has(.home-hero-aside) { grid-template-columns: 1fr; }
@@ -174,6 +211,8 @@ code { font-family: "SFMono-Regular", Consolas, monospace; }
 }
 
 @media (max-width: 760px) {
+  body::before { opacity: .12; background-size: 52px 52px, 52px 52px, auto, auto, auto, auto, auto, auto; }
+  body::after { display: none; }
   .container { width: min(100% - 24px, 1180px); }
   .section { padding: 58px 0; }
   .page-hero { padding: 64px 0 54px; }
