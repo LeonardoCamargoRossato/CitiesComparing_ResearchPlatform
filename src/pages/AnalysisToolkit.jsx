@@ -26,7 +26,7 @@ export default function AnalysisToolkit() {
           <div><StatusBadge tone="accent">Disponível</StatusBadge><h2>City Comparing — Streamlit Alpha</h2><p>Use a aplicação original de Visual Analytics ou percorra sua documentação visual dentro desta plataforma.</p></div>
           <div className="button-row"><a className="button button--primary" href="https://analysis-socioeconomic-indicators.streamlit.app/" target="_blank" rel="noopener noreferrer">Abrir City Comparing <ExternalLink size={17} /></a><Link className="button button--ghost" to="/toolkit/citiesComparing_versaoAlphaStreamlit">Conhecer a versão Alpha</Link></div>
         </div>
-        <div className="visual-story-list toolkit-story-list">{cityComparingStory.slice(0, 3).map((story, index) => <VisualStoryBlock key={story.id} story={story} index={index} items={cityComparingStory} />)}</div>
+        <div className="visual-story-list toolkit-story-list">{cityComparingStory.map((story, index) => <VisualStoryBlock key={story.id} story={story} index={index} items={cityComparingStory} />)}</div>
       </div></section>
 
       <section className="section section--muted"><div className="container">
