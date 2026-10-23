@@ -2,7 +2,6 @@ import {
   BarChart3,
   BookOpen,
   Boxes,
-  Braces,
   Database,
   FileText,
   FlaskConical,
@@ -27,10 +26,9 @@ export const galleryItems = [
 ]
 
 export const platformAreas = [
-  { title: 'Hub de Pesquisa', description: 'Dissertação, apresentações, datasets e recursos científicos reunidos em um só lugar.', to: '/research', icon: BookOpen },
-  { title: 'Notebooks Interativos', description: 'Espaço preparado para experimentos reprodutíveis e notebooks científicos executáveis.', to: '/notebooks', icon: NotebookTabs },
-  { title: 'Toolkit de Análise', description: 'Interfaces para Scatter, Binscatter, B-GCA, análises estatísticas e comparações.', to: '/toolkit', icon: BarChart3 },
-  { title: 'Engine Python / API', description: 'Prévia da arquitetura da camada computacional que alimentará a plataforma.', to: '/engine', icon: Braces },
+  { title: 'Pesquisa', description: 'Dissertação, apresentações, datasets e recursos científicos reunidos em um só lugar.', to: '/research', icon: BookOpen },
+  { title: 'Notebooks', description: 'Código científico e fluxos reprodutíveis utilizados na pesquisa.', to: '/notebooks', icon: NotebookTabs },
+  { title: 'Explorar Ferramentas', description: 'Scatter, Binscatter, B-GCA, análises estatísticas e a aplicação City Comparing.', to: '/toolkit', icon: BarChart3 },
 ]
 
 export const researchCategories = [

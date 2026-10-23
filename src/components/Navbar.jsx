@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 const links = [
   ['Início', '/'],
-  ['Hub de Pesquisa', '/research'],
-  ['Notebooks Interativos', '/notebooks'],
-  ['Toolkit de Análise', '/toolkit'],
-  ['Engine Python / API', '/engine'],
+  ['Pesquisa', '/research'],
+  ['Explorar Ferramentas', '/toolkit'],
+  ['Notebooks', '/notebooks'],
   ['Sobre', '/about'],
 ]
 

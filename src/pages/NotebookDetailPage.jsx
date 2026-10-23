@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import { ArrowLeft, Code2, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import Modal from '../components/Modal'
 import NotebookLibraryTags from '../components/NotebookLibraryTags'
 import NotebookPipeline from '../components/NotebookPipeline'
 import NotebookResultsGallery from '../components/NotebookResultsGallery'
@@ -11,8 +9,6 @@ import { getNotebookBySlug } from '../data/notebooks'
 export default function NotebookDetailPage() {
   const { slug } = useParams()
   const notebook = getNotebookBySlug(slug)
-  const [showNotebookNotice, setShowNotebookNotice] = useState(false)
-
   if (!notebook) return <Navigate to="/notebooks" replace />
 
   return (
@@ -24,16 +20,13 @@ export default function NotebookDetailPage() {
           </nav>
           <div className="notebook-detail-hero__content">
             <div>
-              <StatusBadge>{notebook.category}</StatusBadge>
+              <StatusBadge tone="accent">Código disponível</StatusBadge>
               <h1>{notebook.title}</h1>
               <code className="notebook-detail__filename">{notebook.filename}</code>
               <p>{notebook.longDescription}</p>
               <div className="button-row">
-                <button className="button button--primary" type="button" onClick={() => setShowNotebookNotice(true)}>
-                  <ExternalLink size={17} /> Ver Notebook
-                </button>
-                <a className="button button--ghost" href={notebook.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Code2 size={17} /> Ver Código
+                <a className="button button--primary" href={notebook.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink size={17} /> Visualizar Notebook no GitHub
                 </a>
               </div>
             </div>
@@ -90,11 +83,6 @@ export default function NotebookDetailPage() {
           </aside>
         </div>
       </section>
-
-      <Modal open={showNotebookNotice} title="Execução interativa" onClose={() => setShowNotebookNotice(false)}>
-        <p>Execução interativa será disponibilizada em uma próxima etapa.</p>
-        <p className="modal-file-note"><code>{notebook.filename}</code></p>
-      </Modal>
     </>
   )
 }

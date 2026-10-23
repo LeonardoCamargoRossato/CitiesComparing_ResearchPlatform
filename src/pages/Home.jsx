@@ -1,64 +1,78 @@
-import { ArrowRight, ChartNoAxesCombined, FlaskConical, Network } from 'lucide-react'
+import { ArrowRight, BarChart3, BookOpen, ChartNoAxesCombined, Eye, FlaskConical, Network, NotebookTabs, Repeat2, Scale, Wrench } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import FeatureCard from '../components/FeatureCard'
 import ImageGallery from '../components/ImageGallery'
 import PageHero from '../components/PageHero'
-import PdfViewer from '../components/PdfViewer'
 import SectionTitle from '../components/SectionTitle'
-import StatusBadge from '../components/StatusBadge'
-import { galleryItems, platformAreas } from '../data/content'
+import { galleryItems } from '../data/content'
+
+const tasks = [
+  { title: 'Comparar', description: 'Explore diferenças entre cidades, regiões e países a partir de indicadores socioeconômicos.', to: '/toolkit', icon: Scale },
+  { title: 'Visualizar', description: 'Investigue relações entre variáveis usando gráficos de dispersão e diferentes escalas.', to: '/toolkit', icon: Eye },
+  { title: 'Analisar', description: 'Explore técnicas como Binscatter e B-GCA para identificar tendências e estruturas.', to: '/toolkit', icon: BarChart3 },
+  { title: 'Reproduzir', description: 'Acesse notebooks, código, datasets e materiais científicos da pesquisa.', to: '/notebooks', icon: Repeat2 },
+]
+
+const paths = [
+  { eyebrow: 'Pesquisa', title: 'Conheça a pesquisa', description: 'Acesse artigo, dissertação, datasets, apresentações e materiais suplementares.', label: 'Explorar Pesquisa', to: '/research', icon: BookOpen },
+  { eyebrow: 'Ferramentas', title: 'Explore as ferramentas', description: 'Conheça Scatter, Binscatter, B-GCA e a aplicação City Comparing.', label: 'Explorar Ferramentas', to: '/toolkit', icon: Wrench },
+  { eyebrow: 'Notebooks', title: 'Reproduza os métodos', description: 'Acesse os notebooks científicos, código e fluxo da pesquisa.', label: 'Ver Notebooks', to: '/notebooks', icon: NotebookTabs },
+]
 
 export default function Home() {
   return (
     <>
-      <PageHero eyebrow="Plataforma de pesquisa" title="Cities Comparing Research Platform" description="Uma plataforma de pesquisa para comparar cidades, regiões e países por meio de análise visual, padrões livres de escala, métodos estatísticos e abordagens baseadas em grafos.">
-        <div className="hero-kicker">Econofísica • Visual Analytics • Ciência de Dados</div>
+      <PageHero eyebrow="PLATAFORMA DE PESQUISA" title="Cities Comparing" description="Compare cidades e explore padrões socioeconômicos por meio de Econofísica e Visual Analytics.">
+        <div className="home-hero-aside">
+          <p>Acesse a pesquisa, explore ferramentas de análise e reproduza os métodos utilizados na comparação de cidades, regiões e países.</p>
+          <div className="button-row">
+            <Link className="button button--primary" to="/toolkit">Explorar Ferramentas <ArrowRight size={17} /></Link>
+            <Link className="button button--primary" to="/research">Conhecer a Pesquisa</Link>
+          </div>
+          <Link className="text-link" to="/notebooks">Ver Notebooks <ArrowRight size={16} /></Link>
+        </div>
       </PageHero>
 
-      <section className="section section--tight"><div className="container button-row hero-actions">
-        <Link className="button button--primary" to="/research">Explorar Pesquisa <ArrowRight size={17} /></Link>
-        <Link className="button button--ghost" to="/toolkit">Abrir Toolkit</Link>
-        <Link className="button button--ghost" to="/notebooks">Notebooks Interativos</Link>
-        <a className="button button--ghost" href="assets/docs/Dissertacao_Econofisica_LeonardoRossato.pdf" target="_blank" rel="noreferrer">Ver Dissertação</a>
-      </div></section>
-
-      <section className="section"><div className="container split-grid">
-        <SectionTitle eyebrow="Pergunta de pesquisa" title="Como comparar cidades pequenas e médias entre diferentes países?" description="Diferentes países utilizam critérios de cálculo, estruturas administrativas e padrões distintos de coleta e organização de dados. A plataforma explora abordagens visuais e quantitativas para tornar essas comparações mais transparentes, reprodutíveis e estruturadas." />
-        <div className="research-question-panel"><span>Critérios distintos</span><span>Estruturas administrativas distintas</span><span>Padrões de dados distintos</span><span>Comparabilidade entre países</span></div>
+      <section className="section"><div className="container">
+        <SectionTitle eyebrow="COMECE POR AQUI" title="O que você pode fazer na plataforma" description="Escolha uma tarefa para acessar diretamente os materiais e recursos disponíveis hoje." />
+        <div className="grid grid--4 home-task-grid">
+          {tasks.map(({ icon: Icon, ...task }) => <Link className="card home-task-card" to={task.to} key={task.title}><div className="icon-wrap"><Icon size={22} /></div><h3>{task.title}</h3><p>{task.description}</p><span className="text-link">Explorar <ArrowRight size={16} /></span></Link>)}
+        </div>
       </div></section>
 
       <section className="section section--muted"><div className="container">
-        <SectionTitle eyebrow="Metodologia principal" title="Três abordagens analíticas complementares" />
+        <SectionTitle eyebrow="NAVEGAÇÃO" title="Três caminhos principais" description="Pesquisa, ferramentas e notebooks organizam o conteúdo da plataforma sem separar ciência, método e reprodução." />
+        <div className="grid grid--3 home-path-grid">
+          {paths.map(({ icon: Icon, ...path }) => <article className="card home-path-card" key={path.title}><div className="card-row"><p className="eyebrow">{path.eyebrow}</p><div className="icon-wrap"><Icon size={22} /></div></div><h3>{path.title}</h3><p>{path.description}</p><Link className="button button--ghost" to={path.to}>{path.label} <ArrowRight size={16} /></Link></article>)}
+        </div>
+      </div></section>
+
+      <section className="section"><div className="container split-grid">
+        <SectionTitle eyebrow="PERGUNTA DE PESQUISA" title="Como comparar cidades pequenas e médias entre diferentes países?" description="Critérios de cálculo, estruturas administrativas e padrões de coleta variam entre países e dificultam comparações diretas. O Cities Comparing organiza métodos visuais e quantitativos para tornar essas comparações mais transparentes e reproduzíveis." />
+        <div className="research-question-panel"><span>Critérios distintos</span><span>Estruturas administrativas</span><span>Padrões de coleta</span><span>Comparabilidade internacional</span></div>
+      </div></section>
+
+      <section className="section section--muted"><div className="container">
+        <SectionTitle eyebrow="MÉTODOS" title="Como a análise funciona" description="Três abordagens complementares ajudam a observar tendências, reduzir ruído visual e investigar estruturas nos dados." />
         <div className="grid grid--3">
-          <FeatureCard icon={FlaskConical} title="Detecção de Padrões Livres de Escala" description="Investiga padrões dependentes de escala em indicadores socioeconômicos, incluindo estruturas visuais em escala log-log." />
-          <FeatureCard icon={ChartNoAxesCombined} title="Processo Binscatter" description="Organiza informações densas de scatter em bins para reduzir overplotting e tornar padrões gerais mais fáceis de investigar." />
-          <FeatureCard icon={Network} title="B-GCA / ScatterGraph" description="Baseado no Gravitational Clustering Algorithm. Converte a geometria de scatter plots em estruturas de grafo para explorar densidade, conectividade e padrões." />
+          <FeatureCard icon={FlaskConical} title="Padrões livres de escala" description="Investiga como indicadores socioeconômicos se comportam em diferentes escalas e representações." to="/toolkit" />
+          <FeatureCard icon={ChartNoAxesCombined} title="Binscatter" description="Agrupa distribuições densas para reduzir sobreposição e revelar tendências gerais com mais clareza." to="/notebooks" />
+          <FeatureCard icon={Network} title="B-GCA / ScatterGraph" description="Transforma relações de proximidade dos scatter plots em grafos para estudar conectividade e estrutura." to="/notebooks" />
         </div>
       </div></section>
 
       <section className="section"><div className="container">
-        <SectionTitle eyebrow="Plataforma" title="Principais áreas da plataforma" description="Um ambiente modular de pesquisa pensado para evoluir da documentação científica para ferramentas computacionais interativas." />
-        <div className="grid grid--4">{platformAreas.map((item) => <FeatureCard key={item.title} {...item} />)}</div>
-      </div></section>
-
-      <section className="section section--muted"><div className="container">
-        <SectionTitle eyebrow="Pesquisa visual" title="Graphical Abstract e Galeria de Aplicações" description="Explore visualmente os principais resultados, métodos e aplicações desenvolvidos ao longo da pesquisa." />
+        <SectionTitle eyebrow="PESQUISA VISUAL" title="Graphical Abstract" description="Uma síntese visual curta dos métodos, dados e comparações desenvolvidos na pesquisa." />
         <ImageGallery items={galleryItems} />
       </div></section>
 
-      <section className="section"><div className="container">
-        <SectionTitle eyebrow="Documento de pesquisa" title="Dissertação de Mestrado" />
-        <PdfViewer title="Comparative Analysis of Socioeconomic Indicators of Cities in Brazil, the United States, and Other Countries" src="assets/docs/Dissertacao_Econofisica_LeonardoRossato.pdf" description="Leonardo Camargo Rossato — Dissertação de Mestrado — Física / Econofísica" />
-      </div></section>
-
       <section className="section section--muted"><div className="container">
-        <SectionTitle eyebrow="Aplicação legada" title="City Comparing — Apresentação de Visual Analytics" description="Apresentação que documenta a versão anterior da aplicação City Comparing desenvolvida em Streamlit." />
-        <PdfViewer title="City Comparing — Apresentação de Visual Analytics" src="assets/docs/Apresentacao_Streamlit_App_VisualAnalytics.pdf" description="Implementação anterior do City Comparing desenvolvida em Streamlit." badge={<StatusBadge tone="accent">Legado / Versão Alpha</StatusBadge>} />
-      </div></section>
-
-      <section className="section"><div className="container">
-        <SectionTitle eyebrow="História do projeto" title="Evolução da pesquisa" description="Uma visão simples de como a pesquisa e suas interfaces evoluíram ao longo do tempo." />
-        <div className="timeline">{['Notebooks de Pesquisa', 'Streamlit Alpha', 'Dissertação de Mestrado', 'Cities Comparing Research Platform'].map((item, index) => <div className="timeline__item" key={item}><span>{index + 1}</span><div><strong>{item}</strong>{index < 3 && <p>Próxima etapa →</p>}</div></div>)}</div>
+        <SectionTitle eyebrow="MATERIAIS" title="Pesquisa e evolução do projeto" description="Os documentos completos ficam reunidos na área de Pesquisa; a versão original da aplicação permanece documentada como parte da evolução da plataforma." />
+        <div className="grid grid--3">
+          <FeatureCard icon={BookOpen} title="Dissertação de Mestrado" description="Fundamentação científica, metodologia e resultados da análise comparativa." to="/research" />
+          <FeatureCard icon={ChartNoAxesCombined} title="City Comparing — Streamlit Alpha" description="Conheça a aplicação original de Visual Analytics e seu fluxo de exploração." to="/toolkit/citiesComparing_versaoAlphaStreamlit" />
+          <FeatureCard icon={NotebookTabs} title="Notebooks e código" description="Consulte os notebooks reais e reproduza as etapas da pesquisa a partir do código disponível." to="/notebooks" />
+        </div>
       </div></section>
     </>
   )

@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import Modal from '../components/Modal'
 import NotebookCard from '../components/NotebookCard'
 import NotebookPipeline from '../components/NotebookPipeline'
 import PageHero from '../components/PageHero'
@@ -7,8 +5,6 @@ import SectionTitle from '../components/SectionTitle'
 import { notebookPipeline, notebooks } from '../data/notebooks'
 
 export default function InteractiveNotebooks() {
-  const [selectedNotebook, setSelectedNotebook] = useState(null)
-
   return (
     <>
       <PageHero
@@ -24,11 +20,11 @@ export default function InteractiveNotebooks() {
           <SectionTitle
             eyebrow="6 NOTEBOOKS PRINCIPAIS"
             title="Da preparação dos dados à comparação de redes"
-            description="Cada card representa um arquivo .ipynb real da pesquisa. O código-fonte já pode ser consultado no GitHub; a execução interativa será conectada em uma próxima etapa."
+            description="Cada card representa um arquivo .ipynb real da pesquisa. O código-fonte está disponível para consulta no GitHub; a execução direta na plataforma está em desenvolvimento."
           />
           <div className="grid grid--3 notebook-grid">
             {notebooks.map((notebook) => (
-              <NotebookCard key={notebook.id} notebook={notebook} onOpenNotebook={setSelectedNotebook} />
+              <NotebookCard key={notebook.id} notebook={notebook} />
             ))}
           </div>
         </div>
@@ -44,11 +40,6 @@ export default function InteractiveNotebooks() {
           <NotebookPipeline items={notebookPipeline} />
         </div>
       </section>
-
-      <Modal open={Boolean(selectedNotebook)} title="Execução interativa" onClose={() => setSelectedNotebook(null)}>
-        <p>Execução interativa será disponibilizada em uma próxima etapa.</p>
-        {selectedNotebook && <p className="modal-file-note"><code>{selectedNotebook.filename}</code></p>}
-      </Modal>
     </>
   )
 }
